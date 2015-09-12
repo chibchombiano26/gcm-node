@@ -2,6 +2,7 @@ var GCM = require('./gcm.js');
 var gcm = new GCM('AIzaSyB7uOYVF4PBiNz1DRoA3k_YXHrlGsYnPuQ');
 var express = require('express');
 var app = express();
+var http = require('http');
 
 
 var bodyParser = require('body-parser');
@@ -37,7 +38,9 @@ app.post('/push', function (req, res) {
       });
 });
 
-var server = app.listen(process.env.PORT, function () {
+app.set('port', process.env.PORT || 3000);
+
+var server = http.createServer(app).listen(app.get('port'), function(){
     var addr = server.address();
     console.log("Servidor andando en ", addr.address + ":" + addr.port);
 });

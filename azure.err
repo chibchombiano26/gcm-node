@@ -1,0 +1,17 @@
+Sat Sep 12 2015 17:31:46 GMT+0000 (UTC):
+{ [Error: ENOENT, no such file or directory 'Stage Desarrollo-9-12-2015-credentials']
+  stack: [Getter/Setter],
+  errno: 34,
+  code: 'ENOENT',
+  path: 'Stage Desarrollo-9-12-2015-credentials',
+  syscall: 'open',
+  __frame: undefined,
+  rawStack: [Getter] }
+Error: ENOENT, no such file or directory 'Stage Desarrollo-9-12-2015-credentials'
+    at Object.fs.openSync (fs.js:439:18)
+    at Object.fs.readFileSync (fs.js:290:15)
+    at readFileContents (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/azure-cli/lib/util/profile/publishSettings.js:28:23)
+    at Object.importPublishSettings [as import] (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/azure-cli/lib/util/profile/publishSettings.js:91:13)
+    at Profile._.extend.importPublishSettings (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/azure-cli/lib/util/profile/profile.js:185:34)
+    at __5 (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/azure-cli/lib/commands/account._js:112:23)
+
