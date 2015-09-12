@@ -1,12 +1,13 @@
 
 
-var GCM = require('./gcm.js');
-var gcm = new GCM('AIzaSyB7uOYVF4PBiNz1DRoA3k_YXHrlGsYnPuQ');
 var express = require('express');
 var app = express();
 var http = require('http');
 var path = require('path');
 var async = require('async');
+var GCM = require('./gcm.js');
+var gcm = new GCM('AIzaSyB7uOYVF4PBiNz1DRoA3k_YXHrlGsYnPuQ');
+
 
 //var socketio = require('socket.io');
 
