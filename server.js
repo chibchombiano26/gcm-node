@@ -5,7 +5,8 @@ var app = express();
 var http = require('http');
 var path = require('path');
 var async = require('async');
-var socketio = require('socket.io');
+
+//var socketio = require('socket.io');
 
 
 var bodyParser = require('body-parser');
@@ -15,12 +16,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
 var server = http.createServer(app);
-var io = socketio.listen(server);
+//var io = socketio.listen(server);
 
 app.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
 var sockets = [];
 
+/*
 io.on('connection', function (socket) {
     messages.forEach(function (data) {
       socket.emit('message', data);
@@ -74,6 +76,7 @@ function broadcast(event, data) {
     socket.emit(event, data);
   });
 }
+*/
 
 app.post('/push', function (req, res) {
       
