@@ -3,6 +3,7 @@ var gcm = new GCM('AIzaSyB7uOYVF4PBiNz1DRoA3k_YXHrlGsYnPuQ');
 var express = require('express');
 var app = express();
 
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -36,7 +37,7 @@ app.post('/push', function (req, res) {
       });
 });
 
-var server = app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
+var server = app.listen(process.env.PORT, function () {
     var addr = server.address();
     console.log("Servidor andando en ", addr.address + ":" + addr.port);
 });
