@@ -10,6 +10,7 @@
     "body-parser": "^1.13.3",
     "express": "~3.2.4",
     "socket.io": "~0.9.14",
-    "request": "2.61.0"
+    "request": "2.61.0",
+    "parse": "1.6.1"
   }
 }
