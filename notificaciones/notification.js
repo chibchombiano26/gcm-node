@@ -2,7 +2,7 @@ var Parse = require('parse/node');
 var GCM = require('../gcm/gcm.js');
 var gcm = new GCM('AIzaSyB7uOYVF4PBiNz1DRoA3k_YXHrlGsYnPuQ');
 
-Parse.initialize("dYTgLQ0c874WYkUCn5oBIUejz5VDHtjSK7W80sxY", "1lmRylKsZkNhVAOaD1CtIByJeQidAtFr58UpwKjQ");
+Parse.initialize("kWv0SwtEaz20E7gm5jUNRtzdbLoJktNYvpVWTYpc", "xhg8VzMlpguoJt3TffH62LntLUJj2DFYtYXwJ0Lg");
 
 var notificaciones ={};
 
@@ -54,24 +54,29 @@ notificaciones.saveMessage = function (data){
 
 notificaciones.getMessage = function(req, res){
   var subscriptionId = req.body.subscriptionId;
-  var GameScore = Parse.Object.extend("PushMessage");
-  var query = new Parse.Query(GameScore);
-  query.equalTo("identificator", subscriptionId);
-  query.descending("createdAt");
-  query.limit(1);
-  query.find({
-    success: function(results) {
-      for (var i = 0; i < results.length; i++) {
-        var object = results[i];
-        console.log(object.id + ' - ' + object.get('message'));
-        res.writeHeader(200, {'Content-Type': 'application/json'});
-        res.end(JSON.stringify(object));
+  if(subscriptionId){
+    var GameScore = Parse.Object.extend("PushMessage");
+    var query = new Parse.Query(GameScore);
+    query.equalTo("identificator", subscriptionId);
+    query.descending("createdAt");
+    query.limit(1);
+    query.find({
+      success: function(results) {
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          console.log(object.id + ' - ' + object.get('message'));
+          res.writeHeader(200, {'Content-Type': 'application/json'});
+          res.end(JSON.stringify(object));
+        }
+      },
+      error: function(error) {
+        console.log("Error: " + error.code + " " + error.message);
       }
-    },
-    error: function(error) {
-      console.log("Error: " + error.code + " " + error.message);
-    }
-  });
+    });
+  }
+  else{
+   res.send(404); 
+  }
 }
 
 module.exports = notificaciones;
